@@ -239,7 +239,7 @@ def utilityValue(x,y):
     return PositionValues[x][y]
 
 
-maxDepth = 2
+maxDepth = 1
 flashBestMove = None
 
 def minimax(board,tile):
@@ -318,12 +318,18 @@ def getFlashMove(mainboard,tile):
 ## END AGENT FLASH
 
 
-print('Welcome to Reversi!')
-while True:
+print('Briga de bots, Flash vs o Busca Gulosa')
+
+repete = 2
+countRepete = 0
+flashVitorias = 0
+gulosoVitorias = 0
+
+while countRepete <= repete:
     # Reseta o jogo e o tabuleiro
     mainBoard = getNewBoard()
     resetBoard(mainBoard)
-    playerTile, computerTile = enterPlayerTile()
+    playerTile, computerTile =   ['X', 'O']
     showHints = False
     #showHints = True
 
@@ -368,10 +374,12 @@ while True:
     scores = getScoreOfBoard(mainBoard)
     print('X: %s ponto(s) \nO: %s ponto(s).' % (scores['X'], scores['O']))
     if scores[playerTile] > scores[computerTile]:
+        flashVitorias  +=1
         print('Você venceu o computador por %s ponto(s)! \nParabéns!' % (scores[playerTile] - scores[computerTile]))
     elif scores[playerTile] < scores[computerTile]:
+        gulosoVitorias += 1
         print('Você perdeu!\nO computador venceu você por %s ponto(s).' % (scores[computerTile] - scores[playerTile]))
     else:
         print('Empate!')
-    if not playAgain():
-        break
+
+    countRepete+=1
