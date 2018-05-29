@@ -441,3 +441,6 @@ Computador venceu você por 8 ponto(s).
 Você venceu o computador por 13 ponto(s)!
 Você venceu o computador por 8 ponto(s)!
 Você venceu o computador por 14 ponto(s)!
+Computador venceu você por 12 ponto(s).
+Você venceu o computador por 31 ponto(s)!
+Você venceu o computador por 24 ponto(s)!
