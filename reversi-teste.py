@@ -320,12 +320,12 @@ def getFlashMove(mainboard,tile):
 
 print('Briga de bots, Flash vs o Busca Gulosa')
 
-repete = 2
+repete = 100
 countRepete = 0
 flashVitorias = 0
 gulosoVitorias = 0
 
-while countRepete <= repete:
+while countRepete < repete:
     # Reseta o jogo e o tabuleiro
     mainBoard = getNewBoard()
     resetBoard(mainBoard)
@@ -337,7 +337,7 @@ while countRepete <= repete:
 
     print('O ' + turn + ' começa o jogo.')
     while True:
-        time.sleep(1)
+        time.sleep(0.3)
         if turn == 'player':
 
             drawBoard(mainBoard)
@@ -373,13 +373,32 @@ while countRepete <= repete:
     drawBoard(mainBoard)
     scores = getScoreOfBoard(mainBoard)
     print('X: %s ponto(s) \nO: %s ponto(s).' % (scores['X'], scores['O']))
+
     if scores[playerTile] > scores[computerTile]:
         flashVitorias  +=1
-        print('Você venceu o computador por %s ponto(s)! \nParabéns!' % (scores[playerTile] - scores[computerTile]))
+        print('1, Você venceu o computador por %s ponto(s)!' % (scores[playerTile] - scores[computerTile]))
+        with open('medicoes_bckp.txt', 'a') as f:
+            print('Você venceu o computador por %s ponto(s)!' % (scores[playerTile] - scores[computerTile]), file=f)  # Python 3.x
+
     elif scores[playerTile] < scores[computerTile]:
         gulosoVitorias += 1
-        print('Você perdeu!\nO computador venceu você por %s ponto(s).' % (scores[computerTile] - scores[playerTile]))
+        print('-1, Computador venceu você por %s ponto(s).' % (scores[computerTile] - scores[playerTile]))
+        with open('medicoes_bckp.txt', 'a') as f:
+            print('Computador venceu você por %s ponto(s).' % (scores[computerTile] - scores[playerTile]), file=f)  # Python 3.x
     else:
-        print('Empate!')
 
-    countRepete+=1
+        print(0, 'Empate!')
+        with open('medicoes_bckp.txt', 'a') as f:
+            print('Empate!',file=f)
+
+    countRepete+= 1
+
+percentV = float(flashVitorias/repete * 100)
+with open('relatorio.txt', 'a') as f:
+    print("\nProfundidade da arvore: "+str(maxDepth), file=f)  # Python 3.x
+    f.write('\n===================')
+    f.write('\nQuantidade de jogos '+str(countRepete))
+    f.write('\n===================')
+    f.write("\nFlash vitórias: {0}, Guloso vitórias: {1}. ".format(flashVitorias,gulosoVitorias))
+    f.write("\nFlash ganhou {0}% das vezes".format(percentV))
+    f.write("\n###########################\n")

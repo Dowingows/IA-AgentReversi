@@ -1,0 +1,27 @@
+
+Profundidade da arvore: 1
+
+===================
+Quantidade de jogos 100
+===================
+Flash vitórias: 76, Guloso vitórias: 22. 
+Flash ganhou 76.0% das vezes
+###########################
+
+Profundidade da arvore: 1
+
+===================
+Quantidade de jogos 100
+===================
+Flash vitórias: 84, Guloso vitórias: 15. 
+Flash ganhou 84.0% das vezes
+###########################
+
+Profundidade da arvore: 1
+
+===================
+Quantidade de jogos 100
+===================
+Flash vitórias: 80, Guloso vitórias: 18. 
+Flash ganhou 80.0% das vezes
+###########################
